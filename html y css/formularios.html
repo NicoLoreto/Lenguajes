@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link href="hojadeestilo.css" rel="stylesheet"/>
+<meta charset= "utf-8"/>
+<title>formularios</title>
+</head>
+<body>
+		<h1>Formularios</h1>
+		<h2>Algunas etiquetas útiles para formularios</h2>
+<form id="form-order">
+<p class="buscar">
+	<label for="search">Buscar</label>
+	<input type="search" name="search" id="search"/>
+</p>
+<p>
+<label for="name">Nombre (obligatorio)</label>
+<input type="text"name="nombre"
+placeholder="Nicolás" 
+autofocus
+autocomplete
+required>
+</p>
+<p>
+<label for="name">Apellido (obligatorio)</label>
+<input type="text"name="apellido"
+placeholder="Loreto" 
+autofocus
+autocomplete
+required>
+</p>
+<p>
+<label for="passwd">Contraseña (obligatoria)</label>
+<input type= "password" name="passwd id="passwd"
+placeholder= "fre2345"
+pattern="[a-z]{3}[0-9]{4}"
+required /> La contraseña debe tener 3 letras y 4 numeros 
+</p>
+<p>
+Seleccione una opción <select><option value="html">html</option><option value="css">css</option></select>
+</p>
+<p>
+Url <input type="url"name="url"/>
+</p>
+<p>
+<label for="phone">Teléfono</label>
+<input type="tel"name="phone" id="phone" pattern="(+[0-9]{2})[0-9]{9}"
+placeholder="+54924775529"/>
+</p>
+<p>
+<label for="email">Email</label>
+<input type="email" name="email" id="email" 
+placeholder="mimail@gmail.com"/>
+</p>
+<p>
+<label for="website">Sitio web</label>
+<input type="url" name="website" id="website" placeholder="www.misitioweb.com.ar"/> 
+</p>
+<p>
+<label for= "color"> Color </label>
+<input type="color"name="favcolor"value="#123456"/>
+</p>
+<p>
+<label for= "number"> Número del 2 al 14 </label>
+<input type="number"name="cantidad" id= "numer" placeholder="2" min="2"max="14">
+</p>
+<p>
+<label for= "text">Código de tres letras</label> 
+<input type="text"name="prefijo_pais"pattern="[a-z]{3}"title="codigo de tres letras"placeholder="codigo de tres letras"/>
+</p>
+<p>
+<label for= "deliverydate"> Fecha de envío </label>
+<input type="date" name="deliverydate" id="deliverydate" min= "2012-07-16"/> (Mínimo 16 de julio de 2012)
+</p>
+<p>
+<label for="points">Rango de valores</label>
+<input type="range" name="points" id="points" min="1" max="10"/> (entre 1 y 10)
+</p>
+<p>
+<fieldset>
+<legend>Selecciona una prioridad</legend>
+<p><label><input type="radio" name="priority" value="baja" checked> Baja </label></p>
+<p><label><input type="radio" name="priority" value="media"> Media </label></p>
+<p><label><input type="radio" name="priority" value="alta"> Alta </label></p>
+</fieldset>
+<p>
+<fieldset>
+<legend>Seleccione el tipo de envio</legend>
+<p><label><input type="checkbox" name="deliverydate" value="urgente" checked> Urgente </label></p>
+<p><label><input type="checkbox" name="deliverydate" value="acuse"> Con acuse de recibo </label></p>
+<p><label><input type="checkbox" name="deliverydate" value="reembolso"> Con contrareembolso </label></p>
+</fieldset>
+<input type="submit"value="Enviar">
+</form>
+</body>
+</html>

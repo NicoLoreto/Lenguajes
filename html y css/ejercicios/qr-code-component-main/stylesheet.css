@@ -1,0 +1,52 @@
+body {
+  margin-top: 0;
+  background-color: hsl(212, 45%, 89%);
+}
+/* ==============classes================== */
+
+ .container{
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  flex-direction: column;
+  align-items: center;
+  border-radius: 18px; 
+  width: 320px;
+  margin: 6.5rem auto; 
+ }
+ .qr{
+  display: flex;
+  height: 320px;
+ }
+ .qrimg{
+  width: 286px;
+  margin: 17px 17px 0 17px;
+  border-radius: 8px;
+ }
+ .text{
+ display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: auto 14px;
+ }
+ .header {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 15px 10px 0 10px;
+ }
+ .paragraph{
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  color: hsl(220, 15%, 55%);
+  font-size: 15px;
+  margin: 15px 20px 40px 20px;
+ }
+ .foot {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  text-align: center;
+}
+.foot a {
+  color: hsl(228, 91%, 25%);
+}

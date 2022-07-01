@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8"/>
+		<title>del Castillo & Rossi</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content=" Consultores, consultoria, Asesores, Comercial, Nuestro compromiso: generar un ámbito de confianza y confidencialidad que permita a nuestros clientes mejorar la calidad y el resultado de sus decisiones a partir de nuestras capacidades, conocimientos, y contactos haciendo que cada uno de nuestros trabajos sea una solución única e irrepetible.">
+    
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="css/main.css" rel="stylesheet" media="screen">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+    
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	</head>
+	<body>
+      	   	<div class="container-fluid">
+            <div class="headerbackground"><!--fondo rojo fluido-->
+      		
+         <!-- header --> 
+      			<div class="row-fluid ">
+      				<div class="span3 logohead"><a href="index.html"><img src="img/logo.png" alt="logo"></a></div>
+
+      				<div class="span7 txthead"><img src="img/logotxt.png" alt="del castillo y rossi"></div><br><br><br><br>
+      				</div>
+     				<!-- end header -->
+      				</div><!--fin fondo rojo fluido-->
+
+
+
+
+<div class="row-fluid">
+  <div class="navbar span12"><!-- nav -->
+
+  <div class="navbar-inner">
+     <ul class="nav">
+  <li class="active">
+  <a href="index.html">Inicio</a>
+  <li><a href="nosotros.html" class="transition"> del Castillo & Rossi</a></li>
+  </li>
+  <li><a href="especialidad.html" class="transition">Area de Especialidad</a></li>
+  <li><a href="clientes.html" class="transition">Clientes</a></li>
+  <li><a href="cnct.html" class="transition">Contacto</a></li>
+  </ul>
+  </div>
+  </div>
+  </div>
+      				<!-- end nav -->
+<!-- slide img -->
+<div class="row-fluid">
+<div class="span12 slideimg">    <object
+        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+        id="Movie3"
+        width="1000" height="148"
+      >
+        <param name="movie" value="Movie3.swf">
+        <param name="bgcolor" value="#FFFFFF">
+        <param name="quality" value="high">
+        <param name="seamlesstabbing" value="false">
+        <param name="allowscriptaccess" value="samedomain">
+        <embed
+          type="application/x-shockwave-flash"
+          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
+          name="Movie3"
+          width="100%" height="148"
+
+          src="Movie3.swf"
+          bgcolor="#FFFFFF"
+          quality="high"
+          seamlesstabbing="false"
+          allowscriptaccess="samedomain"
+        >
+          <noembed>
+          </noembed>
+        </embed>
+      </object>
+      </div>
+</div>
+<!-- end slide -->
+
+<!-- menu y contenido -->
+<div class="row-fluid contenido">
+ <div class="span4 menulat">
+ <br>
+ 	<div class="nav">
+ 		<ul class="nav nav-tabs nav-stacked">
+<li></li>
+  <li><a href="estrategia.html" class="transition"> <em>Estrategia</a></em></li>
+  <li><a href="finanzas.html" class="transition"> <em>Finanzas</a></em></li>
+  <li><a href="empfliares.html" class="transition"> <em>Empresas Familiares</a></em></li>
+  <li><a href="ctrldir.html" class="transition"><em>Control Directivo</a></em></li>
+  <li><a href="hcapital.html" class="transition"><em>Human Capital</a></em></li>
+  <li><a href="fusiones.html" class="transition"><em>Fusiones y Adquiciones</a></em></li>
+  <li><a href="proyectos.html" class="transition"><em>Proyectos de Inversión</a></em></li>
+  
+ 	</div>
+
+
+
+
+ </div> 
+ <div class="span6 continicio"><p ><em>Nuestro compromiso: generar un ámbito de confianza y confidencialidad que permita a nuestros clientes mejorar la calidad y el resultado de sus decisiones a partir de nuestras capacidades, conocimientos, y contactos haciendo que cada uno de nuestros trabajos sea una solución única e irrepetible.</em></p></div>
+
+</div>
+<!-- end menu y contenido -->
+<div class="footerbackground">
+<div class="row-fluid"><br><small><p align="center">Corrientes 931 - 2000 Rosario Santa Fe Argentina - Piso 8 - Tel.: +54 341 5270861  - </p></small></div>
+</div>
+      	 </div>	<!-- endcontainer fluid -->
+  	</body>
+</html>#D5DBE0
