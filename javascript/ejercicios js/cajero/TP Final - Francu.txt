@@ -1,0 +1,75 @@
+    public static void main(String[] args) {
+        //Declaracion gral
+        int block = 0;
+        String idout = "0";
+        String idin = "admin";
+        String passin = "admin";
+        //Declaracion: Depositar
+        int saldo = 0;
+        int saldosuma = 0;
+        //Declaracion: Retirar
+        int block2 = 0;
+        int saldoresta = 0;
+
+
+while (block == 0) {
+            String id = JOptionPane.showInputDialog(null, "Ingrese su usuario", "usuario");
+            System.out.println(id);
+            if (idout.equals(id)) {
+                JOptionPane.showMessageDialog(null, "Gracias por utilizar nuestro sistema");
+                block = 1;
+            }
+            if (idin.equals(id)) {
+                String pass = JOptionPane.showInputDialog(null, "Ingrese su contraseña", "contraseña");
+                if (pass.equals(passin)) {
+                    block2 = 0;
+                    while (block2 ==0){
+                    String[] opc = {
+                        "Depositar",
+                        "Retirar dinero",
+                        "Mostrar saldo",
+                        "Salir"
+                    };
+                    String resp = (String) JOptionPane.showInputDialog(null, "Seleccione la operación que desea realizar", "Home banking", JOptionPane.DEFAULT_OPTION, null, opc, opc[0]);
+                    System.out.println(resp);
+
+                    switch (resp) {
+                        case "Depositar":
+                            String saldoin = JOptionPane.showInputDialog(null, "Ingrese el monteo a depositar", "monto");
+                            saldosuma = Integer.parseInt(saldoin);
+                            System.out.println("saldosuma = " + saldosuma);
+                            if (saldosuma > 0) {
+                                saldo = saldo + saldosuma;
+                                System.out.println("saldo = " + saldo);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El valor ingresado no es válido");
+                            }
+//                            System.out.println("Depositar");
+                            break;
+                        case "Retirar dinero":
+                            String retira = JOptionPane.showInputDialog(null, "Ingrese el monteo a retirarar", "monto");
+                            saldoresta = Integer.parseInt(retira);
+                            System.out.println("saldoresta = " + saldoresta);
+                            if (saldoresta > 0) {
+                                saldo = saldo - saldoresta;
+                                System.out.println("saldo = " + saldo);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El valor ingresado no es válido");
+                            }
+//                            System.out.println("Retirar dinero");
+                            break;
+                        case "Mostrar saldo":
+                            JOptionPane.showMessageDialog(null, "Su saldo disponible es: " + saldo);
+                            break;
+                        case "Salir":
+                            System.out.println("Salir");
+                            block2 = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
