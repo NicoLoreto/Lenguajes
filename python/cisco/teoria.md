@@ -1941,3 +1941,635 @@ for i in range(len(test_years)):
 		print("OK")
 	else:
 		print("Fallido")
+
+4.3.1.8
+
+Tu tarea es escribir y probar una función que toma tres argumentos (un año, un mes y un día del mes) y devuelve el día correspondiente del año, o devuelve None si cualquiera de los argumentos no es válido.
+
+Debes utilizar las funciones previamente escritas y probadas. Agrega algunos casos de prueba al código. Esta prueba es solo el comienzo.
+
+def is_year_leap(year):
+	if year % 4 != 0:
+		return False
+	elif year % 100 != 0:
+		return True
+	elif year % 400 != 0:
+		return False
+	else:
+		return True
+
+def days_in_month(year, month):
+	if year < 1582 or month < 1 or month > 12:
+		return None
+	days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	res  = days[month - 1]
+	if month == 2 and is_year_leap(year):
+		res = 29
+	return res
+
+def day_of_year(year, month, day):
+	days = 0
+	for m in range(1, month):
+		md = days_in_month(year, m)
+		if md == None:
+			return None
+		days += md
+	md = days_in_month(year, month)
+	if day >= 1 and day <= md:
+		return days + day
+	else:
+		return None
+
+print(day_of_year(2000, 12, 31))
+
+4.3.1.9
+
+Tu tarea es escribir una función que verifique si un número es primo o no.
+
+La función:
+
+Se llama is_prime.
+Toma un argumento (el valor a verificar).
+Devuelve True si el argumento es un número primo, y False de lo contrario.
+Sugerencia: intenta dividir el argumento por todos los valores posteriores (comenzando desde 2) y verifica el resto: si es cero, tu número no puede ser un número primo; analiza cuidadosamente cuándo deberías detener el proceso.
+
+Si necesitas conocer la raíz cuadrada de cualquier valor, puedes utilizar el operador **. Recuerda: la raíz cuadrada de x es lo mismo que x0.5.
+
+Complementa el código en el editor.
+
+Ejecuta tu código y verifica si tu salida es la misma que la nuestra.
+
+Datos de prueba
+Salida esperada:
+
+2 3 5 7 11 13 17 19
+
+def is_prime(num):
+    for i in range(2, int(1 + num ** 0.5)):
+        if num % i == 0:
+            return False
+    return True
+
+for i in range(1, 20):
+    if is_prime(i + 1):
+        print(i + 1, end=" ")
+print()
+
+4.3.1.10
+
+Tu tarea es escribir un par de funciones que conviertan l/100km a mpg (milas por galón), y viceversa.
+
+Las funciones:
+
+Se llaman liters_100km_to_miles_gallon y miles_gallon_to_liters_100km respectivamente.
+Toman un argumento (el valor correspondiente a sus nombres).
+Complementa el código en el editor.
+
+Ejecuta tu código y verifica si tu salida es la misma que la nuestra.
+
+Aquí hay información para ayudarte:
+
+1 milla = 1609.344 metros.
+1 galón = 3.785411784 litros.
+Salida esperada:
+
+60.31143162393162
+31.36194444444444
+23.52145833333333
+3.9007393587617467
+7.490910297239916
+10.009131205673757
+
+#1 milla (mile) = 1609.344 metros(metres)
+#1 galón (gallon) = 3.785411784 litros(litres)
+    
+def liters_100km_to_miles_gallon(litres):
+    gallons = litres / 3.785411784
+    miles = 100 * 1000 / 1609.344
+    return miles / gallons
+
+def miles_gallon_to_liters_100km(miles):
+    km100 = miles * 1609.344 / 1000 / 100
+    litres = 3.785411784
+    return litres / km100
+
+print(liters_100km_to_miles_gallon(3.9))
+print(liters_100km_to_miles_gallon(7.5))
+print(liters_100km_to_miles_gallon(10.))
+print(miles_gallon_to_liters_100km(60.3))
+print(miles_gallon_to_liters_100km(31.4))
+print(miles_gallon_to_liters_100km(23.5))
+
+Puntos Clave
+
+1. Puedes emplear la palabra clave reservada return para decirle a una función que devuelva algún valor.
+
+2. El resultado de una función se puede asignar fácilmente a una variable, por ejemplo:
+
+def wishes():
+    return "¡Felíz Cumpleaños!"
+
+w = wishes()
+
+print(w)    # salida:¡Felíz Cumpleaños!
+
+dos ejemplos:
+
+# Ejemplo 1
+def wishes():
+    print("Mis deseos")
+    return "Felíz Cumpleaños"
+
+wishes()    # salida: Mis deseos
+
+
+# Ejemplo 2
+def wishes():
+    print("Mis deseos")
+    return "Felíz Cumpleaños"
+
+print(wishes())
+
+# salida: Mis deseos
+#         Felíz Cumpleaños
+
+3. Puedes usar una lista como argumento de una función, por ejemplo:
+
+def hi_everybody(my_list):
+    for name in my_list:
+        print("Hola,", name)
+
+hi_everybody(["Adán", "Juan", "Lucía"])
+
+4. Una lista también puede ser un resultado de función, por ejemplo:
+
+def create_list(n):
+    my_list = []
+    for i in range(n):
+        my_list.append(i)
+    return my_list
+
+print(create_list(5))
+
+4.4.1.1 Los Alcances en Python
+
+El alcance de un nombre (por ejemplo, el nombre de una variable) es la parte del código donde el nombre es reconocido correctamente.
+Una variable que existe fuera de una función tiene alcance dentro del cuerpo de la función.
+
+Esta regla tiene una excepción muy importante = Una variable que existe fuera de una función tiene un alcance dentro del cuerpo de la función, excluyendo a aquellas que tienen el mismo nombre. El alcance de una variable existente fuera de una función solo se puede implementar dentro de una función cuando su valor es leído.
+
+def my_function():
+    var = 3
+    print("¿Conozco a la variable?", var)
+
+
+var = 2
+my_function()
+print(var)
+
+¿Conozco a la variable? 3
+2
+
+# Global
+
+Existe un método especial en Python el cual puede extender el alcance de una variable incluyendo el cuerpo de las funciones para poder no solo leer los valores de las variables sino también modificarlos.
+
+Este efecto es causado por la palabra clave reservada llamada global:
+
+global name
+global name1, name2, ...
+
+El utilizar la palabra reservada dentro de una función con el nombre o nombres de las variables separados por comas, obliga a Python a abstenerse de crear una nueva variable dentro de la función; se empleará la que se puede acceder desde el exterior.
+
+def my_function():
+    global var
+    var = 2
+    print("¿Conozco a aquella variable?", var)
+
+
+var = 1
+my_function()
+print(var)
+
+¿Conozco a aquella variable? 2
+2
+
+Al cambiar el valor del parámetro este no se propaga fuera de la función. Una función recibe el valor del argumento, no el argumento en sí. Esto es cierto para los valores escalares.
+
+Puntos Clave
+
+1. Una variable que existe fuera de una función tiene alcance dentro del cuerpo de la función. A menos que la función defina una variable con el mismo nombre.
+
+Ejemplo 2:
+
+def mult(x):
+    var = 5
+    return x * var
+
+
+print(mult(7))    # salida: 35
+
+
+Ejemplo 3:
+
+def mult(x):
+    var = 7
+    return x * var
+
+
+var = 3
+print(mult(7))    # salida: 49
+
+2. Una variable que existe dentro de una función tiene un alcance solo dentro del cuerpo de la función.
+
+Ejemplo 4:
+
+def adding(x):
+    var = 7
+    return x + var
+
+
+print(adding(4))    # salida: 11
+print(var)    # NameError
+
+3. Se puede emplear la palabra clave reservada global seguida por el nombre de una variable para que el alcance de la variable sea global, por ejemplo:
+
+var = 2
+print(var)    # salida: 2
+
+
+def return_var():
+    global var
+    var = 5
+    return var
+
+
+print(return_var())    # salida: 5
+print(var)    # salida: 5
+
+# diagonal invertida (\)
+
+ Si se termina una línea de código con el, Python entenderá que la línea continua en la siguiente.
+
+ # compactar funcion ej:
+
+Regresará True si todos los lados pueden formar un triángulo, y False de lo contrario. En este caso, is_a_triangle es un buen nombre para dicha función.
+
+
+Observa el código en el editor. Ahí se encuentra la función. Ejecuta el programa.
+
+Parece que funciona perfectamente: estos son los resultados:
+
+True
+False
+salida
+
+def is_a_triangle(a, b, c):
+    if a + b <= c:
+        return False
+    if b + c <= a:
+        return False
+    if c + a <= b:
+        return False
+    return True
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+
+¿Se podrá hacer más compacta?. Parece tener demasiadas palabras.
+
+Esta es la versión más compacta:
+
+def is_a_triangle(a, b, c):
+    if a + b <= c or b + c <= a or c + a <= b:
+        return False
+    return True
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+
+
+¿Se puede compactar aun más?
+
+Por supuesto, observa:
+
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+
+# Algunas funciones simples: factoriales
+
+Se expresa con un signo de exclamación, y es igual al producto de todos los números naturales previos al argumento o número dado.
+
+0! = 1 (¡Si!, es verdad.)
+1! = 1
+2! = 1 * 2
+3! = 1 * 2 * 3
+4! = 1 * 2 * 3 * 4
+:
+:
+n! = 1 * 2 ** 3 * 4 * ... * n-1 * n
+
+def factorial_function(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+    
+    product = 1
+    for i in range(2, n + 1):
+        product *= i
+    return product
+
+
+for n in range(1, 6):  # probando
+    print(n, factorial_function(n))
+
+
+Observa como se sigue el procedimiento matemático, y como se emplea el bucle for para encontrar el producto.
+
+Estos son los resultados obtenidos del código de prueba:
+
+1 1
+2 2
+3 6
+4 24
+5 120
+
+# Algunas funciones simples: Serie Fibonacci
+
+El primer elemento de la secuencia es igual a uno (Fib1 = 1).
+El segundo elemento también es igual a uno (Fib2 = 1).
+Cada número después de ellos son la suman de los dos números anteriores (Fibi = Fibi-1 + Fibi-2).
+Aquí están algunos de los primeros números en la serie Fibonacci:
+
+fib_1 = 1
+fib_2 = 1
+fib_3 = 1 + 1 = 2
+fib_4 = 1 + 2 = 3
+fib_5 = 2 + 3 = 5
+fib_6 = 3 + 5 = 8
+fib_7 = 5 + 8 = 13
+
+def fib(n):
+    if n < 1:
+        return None
+    if n < 3:
+        return 1
+
+    elem_1 = elem_2 = 1
+    the_sum = 0
+    for i in range(3, n + 1):
+        the_sum = elem_1 + elem_2
+        elem_1, elem_2 = elem_2, the_sum
+    return the_sum
+
+
+for n in range(1, 10):  # probando
+    print(n, "->", fib(n))
+
+NO ENTENDI
+
+#  Algunas funcione simples: recursividad
+
+la recursividad es una técnica donde una función se invoca a si misma.
+
+Tanto el factorial como la serie Fibonacci, son las mejores opciones para ilustrar este fenómeno.
+
+La serie de Fibonacci es un claro ejemplo de recursividad. 
+
+El número i se refiere al número i-1, y así sucesivamente hasta llegar a los primeros dos.
+
+La segunda versión de la función fib() hace uso directo de la recursividad:
+
+def fib(n):
+    if n < 1:
+        return None
+    if n < 3:
+        return 1
+    return fib(n - 1) + fib(n - 2)
+
+Si no se considera una condición que detenga las invocaciones recursivas, el programa puede entrar en un bucle infinito
+
+Puntos Clave
+
+1. Una función puede invocar otras funciones o incluso a sí misma. Cuando una función se invoca a si misma, se le conoce como recursividad, y la función que se invoca a si misma y contiene una condición de terminación (la cual le dice a la función que ya no siga invocándose a si misma) es llamada una función recursiva.
+
+2. Se pueden emplear funciones recursivas en Python para crear funciones limpias, elegantes, y dividir el código en trozos más pequeños. Sin embargo, se debe tener mucho cuidado ya que es muy fácil cometer un error y crear una función la cual nunca termine. También se debe considerar que las funciones recursivas consumen mucha memoria, y por lo tanto pueden ser en ocasiones ineficientes.
+
+Al emplear la recursividad, se deben de tomar en cuenta tanto sus ventajas como desventajas.
+
+La función factorial es un ejemplo clásico de como se puede implementar el concepto de recursividad:
+
+
+def factorial(n):
+    if n == 1:    # El caso base (condición de terminación).
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+print(factorial(4)) # 4 * 3 * 2 * 1 = 24
+
+# 4.6.1.1 Tuplas y diccionarios
+
+# tipos de secuencia y mutabilidad.
+
+Un tipo de secuencia es un tipo de dato en Python el cual es capaz de almacenar más de un valor (o ninguno si la secuencia esta vacía), los cuales pueden ser secuencialmente (de ahí el nombre) examinados, elemento por elemento.
+
+Una secuencia es un tipo de dato que puede ser escaneado por el bucle for.
+
+La mutabilidad es una propiedad de cualquier tipo de dato en Python que describe su disponibilidad para poder cambiar libremente durante la ejecución de un programa.
+
+Los datos mutables pueden ser actualizados libremente en cualquier momento, a esta operación se le denomina "in situ".
+
+In situ es una expresión en Latín que se traduce literalmente como en posición, en el lugar o momento. Por ejemplo, la siguiente instrucción modifica los datos "in situ":
+
+list.append(1)
+
+Los datos inmutables no pueden ser modificados de esta manera.
+ Una tupla es una secuencia inmutable. Se puede comportar como una lista pero no puede ser modificada en el momento.
+
+ Lo primero que distingue una lista de una tupla es la sintaxis empleada para crearlas. Las tuplas utilizan paréntesis, mientras que las listas usan corchetes, aunque también es posible crear una tupla tan solo separando los valores por comas.
+
+Observa el ejemplo:
+
+tuple_1 = (1, 2, 4, 8)
+tuple_2 = 1., .5, .25, .125
+
+
+Se definieron dos tuplas, ambas contienen cuatro elementos.
+
+A continuación se imprimen en consola:
+
+tuple_1 = (1, 2, 4, 8)
+tuple_2 = 1., .5, .25, .125
+
+print(tuple_1)
+print(tuple_2)
+
+
+Esto es lo que se muestra en consola:
+
+(1, 2, 4, 8)
+(1.0, 0.5, 0.25, 0.125)
+salida
+
+
+Nota: cada elemento de una tupla puede ser de distinto tipo (punto flotante, entero, cadena, o cualquier otro tipo de dato).
+
+Si se desea crear una tupla de un solo elemento, se debe de considerar el hecho de que, debido a la sintaxis (una tupla debe de poder distinguirse de un valor entero ordinario), se debe de colocar una coma al final:
+
+one_element_tuple_1 = (1, )
+one_element_tuple_2 = 1.,
+
+
+El quitar las comas no arruinará el programa en el sentido sintáctico, pero serán dos variables, no tuplas.
+
+No intentes modificar el contenido de la tupla ¡No es una lista!
+
+La función len() acepta tuplas, y regresa el número de elementos contenidos dentro.
+El operador + puede unir tuplas (ya se ha mostrado esto antes).
+El operador * puede multiplicar las tuplas, así como las listas.
+Los operadores in y not in funcionan de la misma manera que en las listas.
+
+El diccionario es otro tipo de estructura de datos de Python. No es una secuencia (pero puede adaptarse fácilmente a un procesamiento secuencial) y además es mutable.
+
+En el mundo de Python, la palabra que se esta buscando se denomina clave(key). La palabra que se obtiene del diccionario es denominada valor.
+
+Esto significa que un diccionario es un conjunto de pares de claves y valores. Nota:
+
+Cada clave debe de ser única. No es posible tener una clave duplicada.
+Una clave puede ser un tipo de dato de cualquier tipo: puede ser un número (entero o flotante), o incluso una cadena.
+Un diccionario no es una lista. Una lista contiene un conjunto de valores numerados, mientras que un diccionario almacena pares de valores.
+La función len() aplica también para los diccionarios, regresa la cantidad de pares (clave-valor) en el diccionario.
+Un diccionario es una herramienta de un solo sentido. Si fuese un diccionario español-francés, podríamos buscar en español para encontrar su contraparte en francés más no viceversa.
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+phone_numbers = {'jefe': 5551234567, 'Suzy': 22657854310}
+empty_dictionary = {}
+
+print(dictionary)
+print(phone_numbers)
+print(empty_dictionary)
+
+La lista de todos los pares es encerrada con llaves, mientras que los pares son separados por comas, y las claves y valores por dos puntos.
+
+Los diccionarios vacíos son construidos por un par vacío de llaves
+
+Los diccionarios no son listas - no guardan el orden de sus datos, el orden no tiene significado (a diferencia de los diccionarios reales). El orden en que un diccionario almacena sus datos esta fuera de nuestro control.
+
+Si deseas obtener cualquiera de los valores, debes de proporcionar una clave válida:
+
+print(dictionary['gato'])
+print(phone_numbers['Suzy'])
+
+Si una clave es una cadena, se tiene que especificar como una cadena.
+Las claves son sensibles a las mayúsculas y minúsculas: 'Suzy' sería diferente a 'suzy'.
+El fragmento de código da las siguientes salidas:
+
+chat
+5557654321
+
+No se puede utilizar una clave que no exista.
+
+fortunadamente, existe una manera simple de evitar dicha situación. El operador in, junto con su acompañante, not in, pueden salvarnos de esta situación.
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+words = ['gato', 'león', 'caballo']
+
+for word in words:
+    if word in dictionary:
+        print(word, "->", dictionary[word])
+    else:
+        print(word, "no está en el diccionario")
+
+
+La salida del código es la siguiente:
+
+gato -> chat
+león no está en el diccionario
+caballo -> cheval
+
+dictionary = {
+              "gato": "chat",
+              "perro": "chien",
+              "caballo": "cheval"
+              }
+
+phone_numbers = {'jefe': 5551234567,
+                 'Suzy': 22657854310
+                 }
+
+# El método keys()
+
+ retorna o regresa una lista de todas las claves dentro del diccionario. Al tener una lista de claves se puede acceder a todo el diccionario de una manera fácil y útil.
+
+A continuación se muestra un ejemplo:
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+for key in dictionary.keys():
+    print(key, "->", dictionary[key])
+
+El código produce la siguiente salida:
+
+gato -> chat
+perro -> chien
+caballo -> cheval
+
+# La función sorted()
+
+Que la salida este ordenada.
+
+for key in sorted(dictionary.keys()):
+
+La función sorted() hará su mejor esfuerzo y la salida será la siguiente:
+
+caballo -> cheval
+gato -> chat
+perro -> chien
+
+# items ()
+
+Este método regresa una lista de tuplas (este es el primer ejemplo en el que las tuplas son mas que un ejemplo de si mismas) donde cada tupla es un par de cada clave con su valor.
+
+Así es como funciona:
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+for spanish, french in dictionary.items():
+    print(spanish, "->", french)
+
+
+Nota la manera en que la tupla ha sido utilizada como una variable del bucle for.
+
+El ejemplo imprime lo siguiente:
+
+gato -> chat
+perro -> chien
+caballo -> cheval
+
+# values ()
+
+También existe un método denominado values(), funciona de manera muy similar al de keys(), pero regresa una lista de valores.
+
+Este es un ejemplo sencillo:
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+for french in dictionary.values():
+    print(french)
+
+Esta es la salida esperada:
+
+chat
+chien
+cheval
+
+4.6.1.8 Tuplas y diccionarios
