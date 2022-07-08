@@ -2573,3 +2573,529 @@ chien
 cheval
 
 4.6.1.8 Tuplas y diccionarios
+`
+dictionary = {'gato': 'minou', 'perro': 'chien', 'caballo': 'cheval'}
+
+print(dictionary ['gato'])
+
+ Para agregar una nueva clave con su valor a un diccionario se tiene que asignar un valor a una nueva clave que no haya existido antes.
+
+Nota: este es un comportamiento muy diferente comparado a las listas, las cuales no permiten asignar valores a índices no existentes.
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+dictionary['cisne'] = 'cygne'
+print(dictionary)
+
+
+El ejemplo muestra como salida:
+
+{'gato': 'chat', 'perro': 'chien', 'caballo': 'cheval', 'cisne': 'cygne'}
+
+También es posible insertar un elemento al diccionario utilizando el método update(), por ejemplo:
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+dictionary.update({"pato": "canard"})
+print(dictionary)
+
+Eliminado una clave
+
+Al eliminar la clave también se removerá el valor asociado. Los valores no pueden existir sin sus claves.
+
+Esto se logra con la instrucción del.
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+del dictionary['perro']
+print(dictionary)
+
+Para eliminar el ultimo elemento de la lista, se puede emplear el método popitem():
+
+dictionary = {"gato" : "chat", "perro" : "chien", "caballo" : "cheval"}
+
+dictionary.popitem()
+print(dictionary)    # salida: {'gato': 'chat', 'perro': 'chien'}
+
+Las tuplas y los diccionarios pueden trabajar juntos
+
+school_class = {}
+
+while True:
+    name = input("Ingresa el nombre del estudiante: ")
+    if name == '':
+        break
+    
+    score = int(input("Ingresa la calificación del estudiante (0-10): "))
+    if score not in range(0, 11):
+	    break
+    
+    if name in school_class:
+        school_class[name] += (score,)
+    else:
+        school_class[name] = (score,)
+        
+for name in sorted(school_class.keys()):
+    adding = 0
+    counter = 0
+    for score in school_class[name]:
+        adding += score
+        counter += 1
+    print(name, ":", adding / counter)
+
+Línea 1: crea un diccionario vacío para ingresar los datos: el nombre del alumno es empleado como clave, mientras que todas las calificaciones asociadas son almacenadas en una tupla (la tupla puede ser el valor de un diccionario, esto no es un problema).
+Línea 3: se ingresa a un bucle "infinito" (no te preocupes, saldrémos de el en el momento indicado).
+Línea 4: se lee el nombre del alumno aquí.
+Línea 5-6: si el nombre es una cadena vacía (), salimos del bucle.
+Línea 8: se pide la calificación del estudiante (un valor entero en el rango del 1-10).
+Línea 9-10: si la puntuación ingresada no está dentro del rango de 0 a 10, se abandona el bucle.
+Línea 12-13: si el nombre del estudiante ya se encuentra en el diccionario, se alarga la tupla asociada con la nueva calificación (observa el operador +=).
+Línea 14-15: si el estudiante es nuevo (desconocido para el diccionario), se crea una entrada nueva, su valor es una tupla de un solo elemento la cual contiene la calificación ingresada.
+Línea 17: se itera a través de los nombres ordenados de los estudiantes.
+Línea 18-19: inicializa los datos necesarios para calcular el promedio (sum y counter).
+Línea 20-22: se itera a través de la tupla, tomado todas las calificaciones subsecuentes y actualizando la suma junto con el contador.
+Línea 23: se calcula e imprime el promedio del alumno junto con su nombre.
+
+Puntos Clave: Tuplas
+
+1. Las Tuplas son colecciones de datos ordenadas e inmutables. Se puede pensar en ellas como listas inmutables. Se definen con paréntesis:
+
+my_tuple = (1, 2, True, "una cadena", (3, 4), [5, 6], None)
+print(my_tuple)
+
+my_list = [1, 2, True, "una cadena", (3, 4), [5, 6], None]
+print(my_list)
+
+
+Cada elemento de la tupla puede ser de un tipo de dato diferente.
+
+Las tuplas pueden contener otras tuplas o listas (y viceversa).
+
+2. Se puede crear una tupla vacía de la siguiente manera:
+
+empty_tuple = ()
+print(type(empty_tuple))    # salida: <class 'tuple'>
+
+
+3. La tupla de un solo elemento se define de la siguiente manera:
+
+one_elem_tuple_1 = ("uno", )    # Paréntesis y una coma.
+one_elem_tuple_2 = "uno",       # Sin paréntesis, solo la coma.
+
+4. Se pueden acceder los elementos de la tupla al indexarlos:
+
+my_tuple = (1, 2.0, "cadena", [3, 4], (5, ), True)
+print(my_tuple[3])    # salida: [3, 4]
+
+5. Las tuplas son immutable, lo que significa que no se puede agregar, modificar, cambiar o quitar elementos.
+
+Sin embargo, se puede eliminar la tupla completa:
+
+my_tuple = 1, 2, 3, 
+del my_tuple
+print(my_tuple)    # NameError: name 'my_tuple' is not defined
+
+6. Puedes iterar a través de los elementos de una tupla con un bucle (Ejemplo 1), verificar si un elemento o no esta presente en la tupla (Ejemplo 2), emplear la función len() para verificar cuantos elementos existen en la tupla.
+
+También se puede crear una tupla utilizando la función integrada de Python tuple(). Esto es particularmente útil cuando se desea convertir un iterable (por ejemplo, una lista, rango, cadena, etcétera) en una tupla:
+
+my_tuple = tuple((1, 2, "cadena"))
+print(my_tuple)
+
+my_list = [2, 4, 6]
+print(my_list)    # salida: [2, 4, 6]
+print(type(my_list))    # salida: <class 'list'>
+tup = tuple(my_list)
+print(tup)    # salida: (2, 4, 6)
+print(type(tup))    # salida: <class 'tuple'>
+
+De la misma manera, cuando se desea convertir un iterable en una lista, se puede emplear la función integrada de Python denominada list():
+
+tup = 1, 2, 3, 
+my_list = list(tup)
+print(type(my_list))    # salida: <class 'list'>
+
+Puntos Clave: Diccionarios
+
+1. Los diccionarios son colecciones indexadas de datos, mutables y desordenadas.
+
+Cada diccionario es un par de clave : valor. Se puede crear empleado la siguiente sintaxis:
+
+my_dictionary = {
+    key1: value1,
+    key2: value2,
+    key3: value3,
+    }
+
+2. Si se desea acceder a un elemento del diccionario, se puede hacer haciendo referencia a su clave colocándola dentro de corchetes (Ejemplo 1) o utilizando el método get() (Ejemplo 2):
+
+pol_esp_dictionary = {
+    "kwiat": "flor",
+    "woda": "agua",
+    "gleba": "tierra"
+    }
+
+item_1 = pol_esp_dictionary["gleba"]    # Ejemplo 1.
+print(item_1)    # salida: tierra
+
+item_2 = pol_esp_dictionary.get("woda")    # Ejemplo 2.
+print(item_2)    # salida: agua
+
+3. Si se desea cambiar el valor asociado a una clave específica, se puede hacer haciendo referencia a la clave del elemento, a continuación se muestra un ejemplo:
+
+pol_esp_dictionary = {
+    "zamek" : "castillo",
+    "woda"  : "agua",
+    "gleba" : "tierra"
+    }
+
+pol_esp_dictionary["zamek"] = "cerradura"
+item = pol_esp_dictionary["zamek"]    
+print(item)  # salida: cerradura
+
+
+4. Para agregar o eliminar una clave (junto con su valor asociado), emplea la siguiente sintaxis:
+
+phonebook = {}    # un diccionario vacío
+
+phonebook["Adán"] = 3456783958    # crear/agregar un par clave-valor
+print(phonebook)    # salida: {'Adán': 3456783958}
+
+del phonebook["Adán"]
+print(phonebook)    # salida: {}
+
+Además, se puede insertar un elemento a un diccionario utilizando el método update(), y eliminar el ultimo elemento con el método popitem(), por ejemplo:
+
+pol_esp_dictionary = {"kwiat": "flor"}
+
+pol_esp_dictionary.update({"gleba": "tierra"})
+print(pol_esp_dictionary)    # salida: {'kwiat': 'flor', 'gleba': 'tierra'}
+
+pol_esp_dictionary.popitem()
+print(pol_esp_dictionary)    # salida: {'kwiat': 'flor'}
+
+5. Se puede emplear el bucle for para iterar a través del diccionario, por ejemplo:
+
+pol_esp_dictionary = {
+    "zamek": "castillo",
+    "woda": "agua",
+    "gleba": "tierra"
+    }
+
+for item in pol_esp_dictionary:
+    print(item) 
+
+#salida: zamek
+#woda
+#gleba
+
+6. Si deseas examinar los elementos (claves y valores) del diccionario, puedes emplear el método items(), por ejemplo:
+
+pol_esp_dictionary = {
+    "zamek" : "castillo",
+    "woda"  : "agua",
+    "gleba" : "tierra"
+    }
+
+for key, value in pol_esp_dictionary.items():
+    print("Pol/Esp ->", key, ":", value)
+
+
+7. Para comprobar si una clave existe en un diccionario, se puede emplear la palabra clave reservada in:
+
+pol_esp_dictionary = {
+    "zamek" : "castillo",
+    "woda"  : "agua",
+    "gleba" : "tierra"
+    }
+
+if "zamek" in pol_esp_dictionary:
+    print("Si")
+else:
+    print("No")
+
+
+8. Se puede emplear la palabra reservada del para eliminar un elemento, o un diccionario entero. Para eliminar todos los elementos de un diccionario se debe emplear el método clear():
+
+pol_esp_dictionary = {
+    "zamek" : "castillo",
+    "woda"  : "agua",
+    "gleba" : "tierra"
+    }
+
+print(len(pol_esp_dictionary))    # salida: 3
+del pol_esp_dictionary["zamek"]    # eliminar un elemento
+print(len(pol_esp_dictionary))    # salida: 2
+
+pol_esp_dictionary.clear()   # eliminar todos los elementos
+print(len(pol_esp_dictionary))    # salida: 0
+
+del pol_esp_dictionary    # elimina el diccionario
+
+
+9. Para copiar un diccionario, emplea el método copy():
+
+pol_esp_dictionary = {
+    "zamek" : "castillo",
+    "woda"  : "agua",
+    "gleba" : "tierra"
+    }
+
+copy_dictionary = pol_esp_dictionary.copy()
+
+Completa el código para emplear correctamente el método count() para encontrar la cantidad de 2 duplicados en la tupla siguiente.
+
+tup = 1, 2, 3, 2, 4, 5, 6, 2, 7, 2, 8, 9
+duplicates = tup.count(2)
+
+print(duplicates)    # salida: 4
+
+Escribe un programa que "una" los dos diccionarios (d1 y d2) para crear uno nuevo (d3).
+
+d1 = {'Adam Smith': 'A', 'Judy Paxton': 'B+'}
+d2 = {'Mary Louis': 'A', 'Patrick White': 'C'}
+d3 = {}
+
+for item in (d1, d2):
+    # Escribe tu código aquí.
+    d3.update(item)
+
+print(d3)
+
+Escribe un programa que convierta la tupla colors en un diccionario.
+
+colors = (("green", "#008000"), ("blue", "#0000FF"))
+
+colors_dictionary = dict(colors)
+print(colors_dictionary)
+
+sirve para entender for tmb:
+
+colors = {
+    "blanco": (255, 255, 255),
+    "gris": (128, 128, 128),
+    "rojo": (255, 0, 0),
+    "verde": (0, 128, 0)
+    }
+
+for col, rgb in colors.items():
+    print(col, ":", rgb)
+
+consola=
+blanco : (255, 255, 255)
+gris : (128, 128, 128)
+rojo : (255, 0, 0)
+verde : (0, 128, 0)
+
+# depurar codigo
+
+Por ej. verificar si los datos proporcionados por el usuario son válidos y negarte a cooperar si los datos son incorrectos.
+
+value = int(input('Ingresa un número natural: '))
+print('El recíproco de', value, 'es', 1/value)
+
+Python tiene un medio especial para este tipo de comprobaciones: es un operador llamado is. La revisión en sí puede verse de la siguiente manera:
+
+type(value) is int
+
+"Es mejor manejar un error cuando ocurre que tratar de evitarlo".
+
+# try
+
+este es el lugar donde se coloca el código que se sospecha que es riesgoso y puede terminar en caso de un error
+
+# except
+
+sta parte fue diseñada para manejar la excepción; depende de ti lo que quieras hacer aquí: puedes limpiar el desorden o simplemente puede barrer el problema debajo de la alfombra (aunque se prefiere la primera solución).
+Entonces, podríamos decir que estos dos bloques funcionan así:
+
+La palabra clave reservada try marca el lugar donde intentas hacer algo sin permiso.
+La palabra clave reservada except comienza un lugar donde puedes mostrar tu talento para disculparte o pedir perdón.
+
+ Cualquier error que ocurra aquí dentro no terminará la ejecución del programa. En cambio, el control saltará inmediatamente a la primera línea situada después de la palabra clave reservada except, y no se ejecutará ninguna otra línea del bloque try.
+
+El código en el bloque except se activa solo cuando se ha encontrado una excepción dentro del bloque try. No hay forma de llegar por ningún otro medio.
+Cuando el bloque try o except se ejecutan con éxito, el control vuelve al proceso normal de ejecución y cualquier código ubicado más allá en el archivo fuente se ejecuta como si no hubiera pasado nada.
+
+try:
+    value = input('Ingresa un número natural: ')
+    print('El recíproco de', value, 'es', 1/int(value))        
+except:
+    print('No se que hacer con', value)
+
+Ingresa un número natural: 90
+El recíproco de 90 es 0.011111111111111112
+Ingresa un número natural: 10
+El recíproco de 10 es 0.1
+Ingresa un número natural: migo
+No se que hacer con migo
+
+Es posible que desees manejar este tipo de problema de una manera un poco diferente.
+
+Dos excepciones después de un try.
+Observa el código.
+
+Como puedes ver, acabamos de agregar un segundo except. Esta no es la única diferencia; toma en cuenta que ambos except tienen nombres de excepción específicos. En esta variante, cada una de las excepciones esperadas tiene su propia forma de manejar el error, pero se debe enfatizarse en que solo una de todas puede interceptar el control; si se ejecuta una, todas las demás permanecen inactivas. Además, la cantidad de excepciones no está limitado: puedes especificar tantas o tan pocas como necesites, pero no se te olvide que ninguna de las excepciones se puede especificar más de una vez.
+
+try:
+    value = input('Ingresa un número natural: ')
+    print('El recíproco de', value, 'es', 1/int(value))        
+except ValueError:
+    print('No se que hacer con', value)    
+except ZeroDivisionError:
+    print('La división entre cero no está permitida en nuestro Universo.')  
+
+Ingresa un número natural: 0
+La división entre cero no está permitida en nuestro Universo.
+
+try:
+    value = input('Ingresa un número natural: ')
+    print('El recíproco de', value, 'es', 1/int(value))        
+except ValueError:
+    print('No se que hacer con', value)    
+except ZeroDivisionError:
+    print('La división entre cero no está permitida en nuestro Universo.')    
+except:
+    print('Ha sucedido algo extraño, ¡lo siento!')
+
+¡el except por defecto debe ser el último except! ¡Siempre!
+
+Algunas excepciones útiles
+
+ZeroDivisionError
+Esta aparece cuando intentas forzar a Python a realizar cualquier operación que provoque una división en la que el divisor es cero o no se puede distinguir de cero.
+
+ValueError
+Espera esta excepción cuando estás manejando valores que pueden usarse de manera inapropiada en algún contexto. En general, esta excepción se genera cuando una función (como int() o float()) recibe un argumento de un tipo adecuado, pero su valor es inaceptable.
+
+TypeError
+Esta excepción aparece cuando intentas aplicar un dato cuyo tipo no se puede aceptar en el contexto actual. Mira el ejemplo:
+
+short_list = [1]
+one_value = short_list[0.5]
+
+
+No está permitido usar un valor flotante como índice de una lista.
+
+AttributeError
+Esta excepción llega, entre otras ocasiones, cuando intentas activar un método que no existe en un elemento con el que se está tratando. Por ejemplo:
+
+short_list = [1]
+short_list.append(2)
+short_list.depend(3)
+
+
+La tercera línea de nuestro ejemplo intenta hacer uso de un método que no está incluido en las listas. 
+
+SyntaxError
+Esta excepción se genera cuando el control llega a una línea de código que viola la gramática de Python.
+
+ Como no puedes evitar la creación de errores en tu código, siempre debes estar listo para buscarlos y destruirlos.
+
+ Python, como seguramente sabes, es un lenguaje interpretado. Esto significa que el código fuente se analiza y ejecuta al mismo tiempo. En consecuencia, es posible que Python no tenga tiempo para analizar las líneas de código que no están sujetas a ejecución.
+
+ Ya sabes que tu código contiene un error o errores (lo segundo es más probable). Ahora, ¿cómo los localizas y cómo arreglas tu código?
+
+ # Error frente a depuración (Bug vs. debug)
+
+ La medida básica que un desarrollador puede utilizar contra los errores es, como era de esperarse, un depurador, mientras que el proceso durante el cual se eliminan los errores del código se llama depuración.
+
+ Un depurador es un software especializado que puede controlar cómo se ejecuta tu programa. Con el depurador, puedes ejecutar tu código línea por línea, inspeccionar todos los estados de las variables y cambiar sus valores en cualquier momento sin modificar el código fuente, detener la ejecución del programa cuando se cumplen o no ciertas condiciones, y hacer muchas otras tareas útiles.
+
+Si deseas utilizar el depurador integrado de IDLE, debes activarlo mediante la opción "Debug" en la barra de menú de la ventana principal de IDLE. Es el punto de partida para la depuración.
+
+# Depuración por impresión
+
+Esta forma de depuración, que se puede aplicar a tu código mediante cualquier tipo de depurador, a veces se denomina depuración interactiva. El significado del término se explica por sí mismo: el proceso necesita su interacción (la del desarrollador) para que se lleve a cabo.
+
+Simplemente insertas varias invocaciones print() adicionales dentro de tu código para generar datos que ilustran la ruta que tu código está negociando actualmente. Puedes imprimir los valores de las variables que pueden afectar la ejecución.
+
+Estas impresiones pueden generar texto significativo como "Estoy aquí", "Ingresé a la función foo()", "El resultado es 0", o pueden contener secuencias de caracteres que solo tu puedes leer. 
+
+Una vez que se encuentran y eliminan los errores, las impresiones adicionales pueden comentarse o eliminarse; tu decides. 
+
+Algunos consejos útiles
+
+Intenta decirle a alguien (por ejemplo, a tu amigo o compañero de trabajo) qué es lo que se espera que haga tu código y cómo se espera que se comporte.
+
+Intenta aislar el problema. Puedes extraer la parte de tu código que se sospecha que es responsable de tus problemas y ejecutarla por separado. Puedes comentar partes del código para ocultar el problema. Asigna valores concretos a las variables en lugar de leerlos desde la consola. Prueba tus funciones aplicando valores de argumentos predecibles. Analiza el código cuidadosamente. Léelo en voz alta.
+
+Si el error apareció recientemente y no había aparecido antes, analiza todos los cambios que has introducido en tu código
+
+Tómate un descanso, bebe una taza de café, toma a tu perro y sal a caminar, lee un buen libro.
+
+Prueba unitaria: un nivel más alto de codificación
+También existe una técnica de programación importante y ampliamente utilizada que tendrás que adoptar tarde o temprano durante tu carrera de desarrollador: se llama prueba unitaria. El nombre puede ser un poco confuso, ya que no se trata solo de probar el software, sino también (y, sobre todo) de cómo se escribe el código.
+
+debes equipar a tu código con una interfaz que pueda ser utilizada por un entorno de pruebas automatizado. En este enfoque, cualquier enmienda realizada al código (incluso la menos significativa) debe ir seguida de la ejecución de todas las pruebas unitarias que acompañan al código fuente.
+
+Para estandarizar este enfoque y facilitar su aplicación, Python proporciona un módulo dedicado llamado unittest.
+
+Puntos Clave: Excepciones
+
+1. En Python, existe una distinción entre dos tipos de errores:
+
+Errores de sintaxis (errores de análisis), que ocurren cuando el analizador encuentra una sentencia de código que no es correcta. Por ejemplo:
+El intentar ejecutar la siguiente línea:
+
+print("Hola, ¡Mundo!)
+
+Provocará un error del tipo SyntaxError
+
+Excepciones, ocurren incluso cuando una sentencia o expresión es sintácticamente correcta. Estos son los errores que se detectan durante la ejecución, cuando tu código da como resultado un error que no es incondicionalmente fatal. Por ejemplo:
+El intentar ejecutar la siguiente línea:
+
+print(1/0)
+
+Provocará una excepción ZeroDivisionError
+
+2. Puedes "capturar" y manejar excepciones en Python usando el bloque try-except. Por lo tanto, si tienes la sospecha de que cualquier fragmento de código en particular puede generar una excepción, puedes escribir el código que la manejará con elegancia y no interrumpirá el programa. Observa el ejemplo:
+
+while True:
+    try:
+        number = int(input("Ingresa un número entero: "))
+        print(number/2)
+        break
+    except:
+        print("Advertencia: el valor ingresado no es un número válido. Intenta de nuevo...")
+
+El programa entra en el bucle while.
+El bloque try se ejecuta y el usuario ingresa un valor incorrecto, por ejemplo: ¡hola!.
+Se genera una excepción y el resto del código del bloque try se omite. El programa salta al bloque except, lo ejecuta, y luego se sigue al código que se encuentra después del bloque try-except.
+Si el usuario ingresa un valor correcto y no se genera ninguna excepción, las instrucciones subsiguientes al bloque try, son ejecutadas. En este caso, los excepts no se ejecutan.
+
+3. Puedes manejar múltiples excepciones en tu bloque de código. Analiza los siguientes ejemplos:
+
+while True:
+    try:
+        number = int(input("Ingresa un número entero: "))
+        print(5/number)
+        break
+    except ValueError:
+        print("Valor incorrecto.")
+    except ZeroDivisionError:
+        print("Lo siento. No puedo dividir entre cero.")
+    except:
+        print("No se que hacer...")
+
+
+Puedes utilizar varios bloques except dentro de una sentencia try, y especificar nombres de excepciones. Si se ejecuta alguno de los except, los otros se omitirán. Recuerda: puedes especificar una excepción integrada solo una vez. Además, no olvides que la excepción por defecto (o genérica), es decir, a la que no se le especifica nombre, debe ser colocada al final (utiliza las excepciones más específicas primero, y las más generales al último).
+
+También puedes especificar y manejar múltiples excepciones integradas dentro de un solo bloque except:
+
+while True:
+    try:
+        number = int(input("Ingresa un número entero: "))
+        print(5/number)
+        break
+    except (ValueError, ZeroDivisionError):
+        print("Valor incorrecto o se ha roto la regla de división entre cero.")
+    except:
+        print("Lo siento, algo salió mal...")
+
+
+4. Algunas de las excepciones integradas más útiles de Python son: ZeroDivisionError, ValueError, TypeError, AttributeError, y SyntaxError. Una excepción más que, en nuestra opinión, merece tu atención es la excepción KeyboardInterrupt, que se genera cuando el usuario presiona la tecla de interrupción (CTRL-C o Eliminar).
+
+5. Por último, pero no menos importante, debes recordar cómo probar y depurar tu código. Utiliza técnicas de depuración como depuración de impresión; si es posible, pide a alguien que lea tu código y te ayude a encontrar errores o mejorarlo; intenta aislar el fragmento de código que es problemático y susceptible a errores, prueba tus funciones aplicando valores de argumento predecibles, y trata de manejar las situaciones en las que alguien ingresa valores incorrectos; comenta las partes del código que ocultan el problema. Finalmente, toma descansos y vuelve a tu código después de un tiempo con un par de ojos nuevos.
+
+Para obtener un valor numérico aleatorio se puede emplear una función integrada de Python denominada randrange()
