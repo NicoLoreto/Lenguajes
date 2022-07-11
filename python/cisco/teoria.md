@@ -10,7 +10,7 @@ Una función (en este contexto) es una parte separada del código de computadora
 Causar algún efecto (por ejemplo, enviar texto a la terminal, crear un archivo, dibujar una imagen, reproducir un sonido, etc.); esto es algo completamente inaudito en el mundo de las matemáticas.
 Evaluar un valor (por ejemplo, la raíz cuadrada de un valor o la longitud de un texto dado) y devolverlo como el resultado de la función; esto es lo que hace que las funciones de Python sean parientes de los conceptos matemáticos.
 
-Pueden venir de Python mismo. La función print es una de este tipo; dicha función es un valor agregado de Python junto con su entorno (está integrada); no tienes que hacer nada especial (por ejemplo, pedirle a alguien algo) si quieres usarla.
+Pueden venir de Python mismo. La función print es una de este tipo; dicha función es un valor agregado de Python junto con su entorno (está ); no tienes que hacer nada especial (por ejemplo, pedirle a alguien algo) si quieres usarla.
 
 Pueden provenir de uno o varios de los módulos de Python llamados complementos; algunos de los módulos vienen con Python, otros pueden requerir una instalación por separado, cual sea el caso, todos deben estar conectados explícitamente con el código (te mostraremos cómo hacer esto pronto).
 
@@ -3099,3 +3099,5 @@ while True:
 5. Por último, pero no menos importante, debes recordar cómo probar y depurar tu código. Utiliza técnicas de depuración como depuración de impresión; si es posible, pide a alguien que lea tu código y te ayude a encontrar errores o mejorarlo; intenta aislar el fragmento de código que es problemático y susceptible a errores, prueba tus funciones aplicando valores de argumento predecibles, y trata de manejar las situaciones en las que alguien ingresa valores incorrectos; comenta las partes del código que ocultan el problema. Finalmente, toma descansos y vuelve a tu código después de un tiempo con un par de ojos nuevos.
 
 Para obtener un valor numérico aleatorio se puede emplear una función integrada de Python denominada randrange()
+
+Fundamentos de Python 2 - Módulo 1
