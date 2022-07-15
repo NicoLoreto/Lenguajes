@@ -1431,3 +1431,5 @@ subcadena es un carácter individual de la cadena.
 const stTr = 'delftstack';
 const arRr = [...stTr];
 console.log(arRr);
+
+//probando 2
