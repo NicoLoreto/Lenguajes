@@ -305,15 +305,4 @@ select count (p.id), u.name from product p left join user u having count (p.id) 
  # uq : unique, para que pueda agregarse solo un dato
  
  # index : permite que los datos se guarden en la memoria RAM y sean encontrados muchos mas rapido.
- 
- 
 
-
-
-
-
-<<<<<<< HEAD
-=======
- 
-
->>>>>>> 4fa21d32ca759510cafd3dc6548ae4bf73f2a7be
