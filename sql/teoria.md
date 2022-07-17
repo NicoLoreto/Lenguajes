@@ -312,3 +312,8 @@ select count (p.id), u.name from product p left join user u having count (p.id) 
 
 
 
+<<<<<<< HEAD
+=======
+ 
+
+>>>>>>> 4fa21d32ca759510cafd3dc6548ae4bf73f2a7be
