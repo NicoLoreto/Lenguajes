@@ -22,8 +22,97 @@ sentencias para distintas tareas:
  - DCL: control de datos, dar permisos a los usuarios y privilegios.
  - control de transacciones: efectivisar o revocar una sentencia. culmina con la afirmacion a traves de un commit, rollbak (volver para atras), savepoint (va a un punto en particular)
 
+ # create database
+
+ crea la base de datos
+
+ create database if not exist (nombre de la bd)
+
+ # show database
+
+ lista todas las bd creadas
+
+ # use
+
+ pone en uso la bd
+
+ # create table
+
+ crea las tablas
+
+ create table (nombre de la tabla)
+ (
+    <nombre de la columna> <tipo de dato> (longitud),
+    <nombre de la columna> <tipo de dato> (longitud),
+    <nombre de la columna> <tipo de dato> (longitud),
+    <nombre de la columna> <tipo de dato> (longitud),
+
+ );
+
+# insert into
+
+insertar datos
+
+insert into <nombre de la tabla> (tipo, estado) values ('chanchito', 'feliz);
+
+# alter table
+
+modificar tabla
+
+alter table <nombre tabla> modify column id int auto_increment;
+
+q hacer: modificar (modify)
+donde: en la columna
+cual: id
+que agregar: auto_increment
+
+# ctrl + enter = ejecutar
+
+# -- = ignorar
+
+# show create table <tabla>
+
+muestra el comando para crear la misma tabla
+
+# SELECT
+
+seleccionar elementos que se encuentran dentro de una tabla
+
+select * from <tabla>;
+
+selecciona toda la tabla
+
+# where
+
+condicional
+
+select * from <tabla> where id = 1;
+
+selecciona todo donde se cumple esa condicion
+
+select * from animales ehere estado = 'feliz' and tipo = 'chanchito';
 
 # Create Read Update Delete (CRUD)
+
+# update
+
+actualiza un registro
+
+upate animales set estado = 'feliz' where id = 3;
+
+set estado: actualizara esta columna
+'feliz' sera el nuevo estadp
+solo en donde id sea igual a 3
+
+# delete
+
+eliminar
+
+delete from animales where estado = 'feliz';
+
+si el delete no tiene un where dara error para no eliminar todo. tmb pasa con update
+
+# Create
 
 create table user (
  id int not null auto_increment,
@@ -128,6 +217,8 @@ insert into product (name, created_by, marca)
    (`macbook`, 1, `apple`), 
    (`imac`, 3, `apple`);
 
+# read
+
 # left join
 
 trae todos los registros que encuentra en la tabla de la izquierda. Si hay usuarios que no crearon productos mostrara null. pero mostrara al usuario.
@@ -215,5 +306,11 @@ select count (p.id), u.name from product p left join user u having count (p.id) 
  
  # index : permite que los datos se guarden en la memoria RAM y sean encontrados muchos mas rapido.
  
+ 
+
+
+
+
+
  
 
