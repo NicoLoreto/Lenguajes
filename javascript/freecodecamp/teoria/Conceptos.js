@@ -1433,3 +1433,421 @@ const arRr = [...stTr];
 console.log(arRr);
 
 //probando 2
+
+// METODOS EN OBJETOS
+
+/* Los objetos pueden tener un tipo de propiedad especial, llamada método.
+
+Los métodos son propiedades que son funciones. Estos agregan diferentes comportamientos a los objetos. Aquí esta el ejemplo de duck con un método:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + duck.name + ".";}
+};
+duck.sayName();
+
+Aunque esta es una forma válida de acceder a la propiedad del objeto, existe un problema. Si el nombre de la variable cambia, cualquier código que haga referencia al nombre original también tendría que ser actualizado. En una definición breve de un objeto, esto no es un problema, pero si un objeto tiene muchas referencias a sus propiedades hay una mayor probabilidad de error.
+
+Una forma de evitar estos problemas es con palabra clave this:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + this.name + ".";}
+};
+
+En el contexto actual, this se refiere al objeto con el que el método está asociado: duck. Si el nombre del objeto se cambia a mallard, 
+no es necesario encontrar todas las referencias a duck en el código. Hace que el código sea reutilizable y mas fácil de leer.
+*/
+
+// CONSTRUCTOR
+
+/*
+Las funciones Constructors crean nuevos objetos. Definen propiedades y comportamientos que pertenecerán al nuevo objeto. Piensa que son 
+el modelo para la creación de nuevos objetos.
+
+A continuación se muestra un ejemplo de un constructor:
+
+function Bird() {
+  this.name = "Albert";
+  this.color = "blue";
+  this.numLegs = 2;
+}
+Este constructor define un objeto Bird con las propiedades name, color y numLegs establecidas a Albert, blue y 2 respectivamente. Los 
+constructores tienen las siguientes convenciones:
+
+Están definidos con un nombre en mayúscula para distinguirlos de otras funciones que no son constructors.
+Utilizan la palabra clave this para establecer propiedades del objeto que crearán. Dentro del constructor, this se refiere al nuevo 
+objeto que creará.
+Los Constructors definen propiedades y comportamientos en vez de devolverlos como un valor como lo harían otras funciones.
+*/
+
+function Dog (){
+  this.name = "Carlitos",
+  this.color = "Marron",
+  this.numLegs = 4
+}
+
+// prestar atencion que usa el signo =, no el :.
+// NOTA: this dentro del constructor siempre se refiere al objeto que se está creando.
+
+function Bird() {
+  this.name = "Albert";
+  this.color  = "blue";
+  this.numLegs = 2;
+}
+
+let blueBird = new Bird();
+
+/* 
+Observa que se utiliza el operador new cuando llamamos a un constructor. Esto le indica a JavaScript que cree una nueva instancia de Bird llamada blueBird. Sin el operador new, dentro del constructor this no haría referencia al nuevo objeto, dando resultados inesperados. Ahora blueBird tiene todas las propiedades definidas dentro del constructor Bird:
+
+blueBird.name;
+blueBird.color;
+blueBird.numLegs;
+Al igual que cualquier otro objeto, sus propiedades pueden ser accedidas y modificadas:
+
+blueBird.name = 'Elvira';
+blueBird.name;
+*/
+
+function Dog (){
+  this.name = "Carlitos",
+  this.color = "Marron",
+  this.numLegs = 4
+}
+
+let hound = new Dog ();
+
+hound.name = "Monic",
+hound.color = "Rosa",
+hound.numLegs = 4
+
+console.log (hound)
+
+/*
+Para crear más fácilmente diferentes objetos Bird, puedes diseñar tu constructor de aves para aceptar parámetros:
+
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 2;
+}
+Luego pasa los valores como argumentos para definir cada ave única en el constructor Bird: let cardinal = new Bird("Bruce", "red"); Esto genera una nueva instancia de Bird con propiedades name y color que tienen como valor Bruce y red, respectivamente. La propiedad numLegs aún está establecida en 2. El cardinal tiene estas propiedades:
+
+cardinal.name
+cardinal.color
+cardinal.numLegs
+*/
+
+function Dog(name,color) {
+  this.name = name,
+  this.color = color,
+  this.numLegs = 4
+}
+
+let terrier = new Dog("Tito", "blanco")
+
+console.log (terrier)
+
+let yipzu = new Dog ("Layla", "blanco")
+
+console.log(yipzu.name)
+
+// INSTANCIA
+
+/*
+Cada vez que una función constructora crea un nuevo objeto, se dice que ese objeto es una instancia de su constructor. JavaScript 
+proporciona una manera conveniente de verificar esto con el operador instanceof. instanceof permite comparar un objeto con un 
+constructor, devuelve true o false basado en si ese objeto fue creado o no con dicho constructor. 
+*/
+
+let Bird = function(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 2;
+}
+
+let crow = new Bird("Alexis", "black");
+
+crow instanceof Bird;
+
+//Aquí el método instanceof devolverá true.
+
+//Si un objeto es creado sin usar un constructor, instanceof verificará que no es una instancia de ese constructor:
+
+let canary = {
+  name: "Mildred",
+  color: "Yellow",
+  numLegs: 2
+};
+
+canary instanceof Bird;
+
+//Aquí el método instanceof devolverá false.
+
+function House(numBedrooms) {
+  this.numBedrooms = numBedrooms;
+}
+
+let myHouse = new House(4)
+
+console.log (myHouse instanceof House);
+
+// propiedades directas
+
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let duck = new Bird("Donald");
+let ccanary = new Bird("Tweety");
+
+/* 
+name y numLegs se llaman propiedades directas, porque están definidas directamente en la instancia del objeto. Eso significa que duck y 
+canary tienen su propia copia separada de estas propiedades. De hecho, cada instancia de Bird tendrá su propia copia de estas propiedades. 
+El siguiente código añade todas las propiedades directas de duck al arreglo ownProps:
+*/
+
+let ownProps = [];
+
+for (let property in duck) {
+  if(duck.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
+
+console.log(ownProps);
+
+//La consola mostrará el valor ["name", "numLegs"].
+
+// hasOwnProperty devuelve un valor booleano que indica si el objeto al que lo está llamando tiene una propiedad con el nombre del 
+//argumento. Por ejemplo:
+
+var x = {
+  y: 10
+};
+console.log(x.hasOwnProperty("y")); //true
+console.log(x.hasOwnProperty("z")); //false
+
+//ej
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let caanary = new Bird("Tweety");
+let ownPropss = [];
+
+for (let property in canary){
+  if(canary.hasOwnProperty(property)){
+    ownProps.push(property);
+  }
+}
+
+//prototype
+
+/*
+Dado que numLegs probablemente tendrán el mismo valor para todas las instancias de Bird, esencialmente tienes una variable duplicada 
+numLegs dentro de cada instancia de Bird.
+Una mejor forma es utilizar el prototype de Bird. Las propiedades del prototype se comparten entre TODAS las instancias de Bird.
+*/
+
+Bird.prototype.numLegs = 2;
+
+//Ahora todas las instancias de Bird tienen la propiedad numLegs.
+
+//la propiedad prototype, no es una propiedad directa.
+
+function Dog(name) {
+  this.name = name;
+}
+Dog.prototype.numLegs=4;
+
+
+// Cambia solo el código encima de esta línea
+let beagle = new Dog("Snoopy");
+
+/*
+Las propiedades directas se definen directamente en la propia 
+instancia del objeto. Y las propiedades prototype se definen en el prototype.
+*/
+
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype.numLegs = 4;
+
+let beaglee = new Dog("Snoopy");
+
+let ownPropsss = [];
+let prototypeProps = [];
+
+// Cambia solo el código debajo de esta línea
+
+for (let property in beaglee){
+  if (beaglee.hasOwnProperty(property)){
+    ownPropsss.push(property)
+  }
+  else{
+    prototypeProps.push(property)
+  }
+}
+
+console.log(ownPropsss)
+console.log(prototypeProps)
+
+/*
+Hay una propiedad especial constructor ubicada en instancias de objeto duck y beagle que fueron creados en desafíos anteriores:
+
+let duck = new Bird();
+let beagle = new Dog();
+
+console.log(duck.constructor === Bird); 
+console.log(beagle.constructor === Dog);
+Ambas llamadas console.log devolverían true en la consola.
+*/
+
+function Dog(name) {
+  this.name = name;
+}
+
+function joinDogFraternity(candidate) {
+  if(candidate.constructor === Dog){
+    return true
+  }
+  else{
+    return false
+  }
+
+}
+
+// las propiedades pueden ser añadidas todas a la vez:
+
+Bird.prototype = {
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+/*
+ ¡Elimina la propiedad constructor! Esta propiedad puede ser usada para verificar cuál función de constructor creó la instancia. 
+ Sin embargo, dado que la propiedad ha sido sobrescrita, ahora devuelve resultados falsos:
+
+duck.constructor === Bird;
+duck.constructor === Object;
+duck instanceof Bird;
+En orden, estas expresiones se evaluarían como false, true y true.
+
+Para solucionar esto, cada vez que un prototipo se establece de forma manual a un nuevo objeto, recuerda definir la propiedad 
+constructor:
+
+Bird.prototype = {
+  constructor: Bird,
+  numLegs: 2,
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name); 
+  }
+};\
+*/
+
+// los objetos también heredan su prototype directamente de la función constructor que lo creó.
+
+function Bird(name) {
+  this.name = name;
+}
+
+let duckk = new Bird("Donald");
+
+/*duckk hereda su prototype de la función constructor Bird. Puedes mostrar esta relación con el método isPrototypeOf:
+
+Bird.prototype.isPrototypeOf(duck);
+Este devolvería true.
+*/
+
+function Dog(name) {
+  this.name = name;
+}
+
+let beaagle = new Dog("Snoopy");
+
+console.log (Dog.prototype.isPrototypeOf(beaagle))
+
+/*
+Todos los objetos en JavaScript (con algunas excepciones) tienen un prototype. Además, el prototype de un objeto en sí mismo es un 
+objeto.
+
+function Bird(name) {
+  this.name = name;
+}
+
+typeof Bird.prototype;
+Debido a que prototype es un objeto, ¡unprototype puede tener su propio prototype! En este caso, el prototype de Bird.prototype es 
+Object.prototype:
+
+Object.prototype.isPrototypeOf(Bird.prototype);
+¿Por qué sería útil? Quizás recuerdes el método hasOwnProperty del desafío pasado:
+
+let duck = new Bird("Donald");
+duck.hasOwnProperty("name");
+El método hasOwnProperty se define en Object.prototype al cual se puede acceder con Bird.prototype, al que se puede acceder con duck. 
+Este es un ejemplo de la cadena prototype. En esta cadena prototype, Bird es el supertype de duck mientras que duck es el subtype. 
+Object es un supertype de Bird y duck. Object es un supertype de todos los objetos en JavaScript. Por lo tanto, cualquier objeto puede 
+utilizar el método hasOwnProperty.
+
+*/
+
+/*
+Hay un principio en la programación llamado No te repitas (Don't Repeat Yourself "DRY"). La razón por la que el código repetido es 
+un problema es porque cualquier tipo de cambio requiere corregir código en múltiples lugares. Esto suele significar más trabajo para 
+los programadores y más espacio para errores.
+
+Observa en el siguiente ejemplo como el método describe es compartido por Bird y Dog:
+
+Bird.prototype = {
+  constructor: Bird,
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+Dog.prototype = {
+  constructor: Dog,
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+El método describe se repite en dos lugares. El código se puede editar para seguir el principio DRY creando un supertype (o padre) 
+llamado Animal:
+
+function Animal() { };
+
+Animal.prototype = {
+  constructor: Animal, 
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+Dado que Animal incluye el método describe, puedes eliminarlo de Bird y Dog:
+
+Bird.prototype = {
+  constructor: Bird
+};
+
+Dog.prototype = {
+  constructor: Dog
+};
+
+*/
